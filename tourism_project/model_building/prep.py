@@ -6,9 +6,9 @@ print("Dataset loaded successfully.")
 
 tourism_df.drop(columns=["CustomerID"], inplace=True)
 # Drop the unnamed index column if it exists
-if 'Unnamed: 0' in df.columns or df.columns[0] == '':df = df.iloc[:, 1:]
+if 'Unnamed: 0' in tourism_df.columns or df.columns[0] == '':tourism_df = tourism_df.iloc[:, 1:]
 # Handle specific data quality issues (e.g., "Fe Male" should be "Female")
-if 'Gender' in df.columns:df['Gender'] = df['Gender'].str.strip().replace({'Fe Male': 'Female', 'Fe male': 'Female'})
+if 'Gender' in tourism_df.columns:tourism_df['Gender'] = tourism_df['Gender'].str.strip().replace({'Fe Male': 'Female', 'Fe male': 'Female'})
 # Define the target variable for the classification task
 target = 'ProdTaken'
 
