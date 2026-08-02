@@ -1,4 +1,5 @@
 import pandas as pd
+from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 
 tourism_df = pd.read_csv("tourism_project/data/tourism.csv")
@@ -11,6 +12,8 @@ if 'Unnamed: 0' in tourism_df.columns or df.columns[0] == '':tourism_df = touris
 if 'Gender' in tourism_df.columns:tourism_df['Gender'] = tourism_df['Gender'].str.strip().replace({'Fe Male': 'Female', 'Fe male': 'Female'})
 # Define the target variable for the classification task
 target = 'ProdTaken'
+
+
 
 # List of numerical features in the dataset
 numeric_features = [
@@ -37,6 +40,18 @@ categorical_features = [
     'MaritalStatus',              # Marital status of the customer (Single, Married, Divorced)
     'Designation'                 # Customer's designation in their current organization
 ]
+
+
+# Encode categorical columns
+print("\nEncoding categorical variables...")
+label_encoder = LabelEncoder()
+ 
+
+ 
+for col in categorical_features:
+    if col in df.columns:
+        df[col] = label_encoder.fit_transform(df[col].astype(str))
+
 
 # Define predictor matrix (X) using selected numeric and categorical features
 X = tourism_df[numeric_features + categorical_features]
