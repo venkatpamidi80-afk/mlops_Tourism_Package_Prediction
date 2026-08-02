@@ -49,8 +49,8 @@ label_encoder = LabelEncoder()
 
  
 for col in categorical_features:
-    if col in df.columns:
-        df[col] = label_encoder.fit_transform(df[col].astype(str))
+    if col in tourism_df.columns:
+        tourism_df[col] = label_encoder.fit_transform(tourism_df[col].astype(str))
 
 
 # Define predictor matrix (X) using selected numeric and categorical features
