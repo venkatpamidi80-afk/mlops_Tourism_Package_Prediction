@@ -25,12 +25,6 @@ Xtest  = pd.read_csv("Xtest.csv")
 ytrain = pd.read_csv("ytrain.csv").squeeze()
 ytest  = pd.read_csv("ytest.csv").squeeze()
 
-Xtrain = pd.read_csv(Xtrain)
-Xtest = pd.read_csv(Xtest)
-ytrain = pd.read_csv(ytrain)
-ytest = pd.read_csv(ytest)
-
-
 # List of numerical features in the dataset
 numeric_features = [
     'Age',                        # Age of the customer
